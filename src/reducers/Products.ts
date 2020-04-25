@@ -1,7 +1,8 @@
 import {ProductActionTypes} from "../modules/product/actions";
 
 const initialState = {
-    products: []
+    products: [],
+    loadingProducts: false
 };
 
 const Products = (state = initialState, action: any) => {
@@ -9,8 +10,15 @@ const Products = (state = initialState, action: any) => {
       case ProductActionTypes.GetProductsSuccess:
           return {
               ...state,
-              products: action.payload
+              products: action.payload,
+              loadingProducts: false
           };
+      case ProductActionTypes.GetProducts:
+          return {
+              ...state,
+              loadingProducts: true
+          };
+
       default:
           return state;
   }

@@ -12,6 +12,10 @@ import ProductList from "./modules/product/components/ProductList";
 import {ReactReduxFirebaseProvider} from "react-redux-firebase";
 import {fbConfig, rrfConfig} from "./Config";
 import LoginForm from "./modules/login/components/loginForm";
+import TestButtonLoading from "./modules/product/components/testButton/button-loading";
+import {LoadingBar} from "react-redux-loading-bar";
+import {LinearProgress} from "@material-ui/core";
+import Loading from "./modules/loading/components/loading";
 
 firebase.initializeApp(fbConfig);
 
@@ -28,15 +32,24 @@ function App() {
 
             <ReactReduxFirebaseProvider {...rrfProps}>
             <div className="App">
+                <Loading />
+
+
                 <header className="App-header">
+
                     <img src={logo} className="App-logo" alt="logo"/>
                     <p>
                         Edit <code>src/App.tsx</code> and save to reload.
                     </p>
 
                     <TestButton/>
+
+                    <TestButtonLoading></TestButtonLoading>
+
                     <SmartButton/>
                     <ProductList/>
+
+                    <LoadingBar />
 
                     <LoginForm></LoginForm>
 

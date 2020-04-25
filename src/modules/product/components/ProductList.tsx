@@ -1,11 +1,11 @@
 import React from 'react';
 
 import {useSelector} from "react-redux";
-import {createStyles, Theme} from "@material-ui/core";
+import {CircularProgress, createStyles, Theme} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
 import ProductCard from "./card";
-import {getProductsSelector} from "../selectors";
+import {getProductsSelector, showLoading} from "../selectors";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -28,11 +28,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function ProductList() {
     const classes = useStyles();
-    const products = useSelector(getProductsSelector)
+    const products = useSelector(getProductsSelector);
 
-    return (products) ?
+    return (!!products.length) ?
         (<div className={classes.root}> {products.map((i) => {
             return <div className={classes.item} key={i.id}><ProductCard id={i.id} title={i.title} body={i.body}></ProductCard></div>
-        })} </div>) :
-        <div color={"white"}>Žádná data</div>;
+        })} </div>) : (<div>nou data</div>);
 }
