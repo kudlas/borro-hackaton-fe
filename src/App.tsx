@@ -14,8 +14,11 @@ import {fbConfig, rrfConfig} from "./Config";
 import LoginForm from "./modules/login/components/loginForm";
 import TestButtonLoading from "./modules/product/components/testButton/button-loading";
 import {LoadingBar} from "react-redux-loading-bar";
-import {LinearProgress} from "@material-ui/core";
 import Loading from "./modules/loading/components/loading";
+import ButtonRedirect from "./modules/product/components/testButton/button-redirect";
+import {ConnectedRouter} from "connected-react-router";
+import history from "./modules/router/history";
+
 
 firebase.initializeApp(fbConfig);
 
@@ -29,7 +32,7 @@ const rrfProps = {
 function App() {
     return (
         <Provider store={store}>
-
+            <ConnectedRouter history={history}>
             <ReactReduxFirebaseProvider {...rrfProps}>
             <div className="App">
                 <Loading />
@@ -39,23 +42,23 @@ function App() {
 
                     <img src={logo} className="App-logo" alt="logo"/>
                     <p>
-                        Edit <code>src/App.tsx</code> and save to reload.
                     </p>
 
                     <TestButton/>
 
                     <TestButtonLoading></TestButtonLoading>
 
+                    <ButtonRedirect/>
+
                     <SmartButton/>
                     <ProductList/>
 
                     <LoadingBar />
 
-                    <LoginForm></LoginForm>
-
                 </header>
             </div>
             </ReactReduxFirebaseProvider>
+            </ConnectedRouter>
         </Provider>
     );
 }

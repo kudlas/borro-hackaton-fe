@@ -5,10 +5,12 @@ import {hideLoading, showLoading} from "react-redux-loading-bar";
 
 // https://reactjs.org/docs/hooks-intro.html
 export default function TestButtonLoading() {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
 
     const click = () => {
+
+        setLoading(!loading);
 
         if(loading) {
             dispatch(showLoading());
@@ -16,11 +18,10 @@ export default function TestButtonLoading() {
             dispatch(hideLoading());
         }
 
-        setLoading(!loading);
     };
 
     return (<Button variant="contained" color="primary" onClick={click}>
-                loading: {loading ? "jo" : "ne"}
+                loading: {loading ? "ne" : "jo"}
             </Button>
     );
 }
