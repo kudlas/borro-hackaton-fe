@@ -8,7 +8,7 @@ const ButtonRedirect = () => {
     const dispatch = useDispatch();
 
     return (
-        <Button onClick={() => dispatch(push('/path/to/somewhere'))}>Redirect me</Button>
+        <Button onClick={() => dispatch(push('/product/detail'))}>Redirect me</Button>
     );
 };
 

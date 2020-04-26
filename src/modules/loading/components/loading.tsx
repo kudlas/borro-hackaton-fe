@@ -18,7 +18,7 @@ function Loading() {
 
     if(loading)
         return (
-            <LinearProgress variant="query" />
+                <LinearProgress variant="query"/>
         );
     else
         return <div className={classes.blankLoading}></div>;
